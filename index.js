@@ -19,7 +19,7 @@ program.command('getlang [src]')
     .option('-d, --dir <dir>', '[optional]需要收集中文的文件夹，默认为pages 和 components', value => {
         return value.split(',')
     })
-    .option('-d, --ignoredir <ignoredir>', '[optional]需要收集中文的文件夹，默认为pages 和 components', value => {
+    .option('-i, --ignoredir <ignoredir>', '[optional]需要收集中文的文件夹，默认为pages 和 components', value => {
         return value.split(',')
     })
     .action((src = 'src', {dir = ['pages', 'components'], filename = 'zh_cn.json', ignoredir}) => {
@@ -47,7 +47,7 @@ program.command('writelang [src]')
         }
     })
 
-// 将国际化js文件转成excel并输出，地址默认为执行脚本所在位置且不能修改    
+// 将国际化js文件转成excel并输出，地址默认为执行脚本所在位置且不能修改
 program.command('toexcel [url] [translateUrl] [filename]')
     .description('将多语言js文件转成excel表格\n[url]多语言js文件路径, 如/src/lib/xx.js, \n[translateUrl] 选填，为已经翻译的语言的js，用于提取语言增量，\n[filename]生成的excel文件名，默认当前位置，不能修改存储地址，格式可以为".xls", ".xml",".xlsx",".xlsm"\n')
     // .option('-u, --url <url>', '[must]多语言js文件路径, 如./src/lib/xx.js')
@@ -102,10 +102,10 @@ program.command('toexcel [url] [translateUrl] [filename]')
                 }
             }
         });
-        
+
     })
 
-    // 将excel文件转成js并输出，js文件默认为执行脚本所在位置且不能修改 
+    // 将excel文件转成js并输出，js文件默认为执行脚本所在位置且不能修改
 program.command('tojs [url] [filename]')
 .description('将多语言js文件转成excel表格\n [filename] 多语言js文件，默认 translate.js, 默认当前位置，不能修改存储地址，如xx.js,\n [url]excel文件路径，格式可以为".xls", ".xml",".xlsx",".xlsm"\n')
 // .option('-f, --filename <filename>', '[optional]多语言js文件, 默认当前位置，不能修改存储地址，如xx.js')
@@ -143,7 +143,7 @@ program.command('tojs [url] [filename]')
             })
         }
     });
-    
+
 })
 
 program.on('command:*', function () {
